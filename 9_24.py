@@ -103,7 +103,18 @@ def remove_nth(head, n):
 
     if length == n:
         return head.next
-    return new_head
+
+    temp = head 
+    new_length = length - n - 1 
+    while new_length:
+        temp = temp.next 
+        new_length -= 1
+
+    if temp.next:
+        temp.next = temp.next.next
+    else:
+        temp.next = None
+    return head 
 
 head = link_list([1,2,3,4,5])
 print(remove_nth(head, 2))
